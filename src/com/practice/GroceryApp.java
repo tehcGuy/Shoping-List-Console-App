@@ -1,17 +1,21 @@
 package com.practice;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class GroceryApp {
-    ArrayList<String> groceryList = new ArrayList<>();
+    private static ArrayList<String> groceryList = new ArrayList<>();
 
-    public void addItem(String name) {
-        groceryList.add(name);
+    public ArrayList<String> getGroceryList() {
+        return groceryList;
+    }
+
+    public void printWithEnhance() {
+        for(String item : groceryList) {
+            System.out.print(item + " ");
+        }
     }
 
     public void printItem() {
-        System.out.println("Currently your list is composed of ");
         for(int i = 0; i < groceryList.size(); i++) {
             System.out.println((i + 1) + ". " + groceryList.get(i)); //num is like groceryList.get(num)
         }
@@ -20,20 +24,44 @@ public class GroceryApp {
         }
     }
 
-    public void updateItem(int index, String name) {
+    public void addItem(String name) {
+        groceryList.add(name);
+    }
+
+
+    private void updateItem(int index, String name) {
         groceryList.set(index, name);
     }
 
-    public void removeItem(int index) {
+    public void updateItem(String oldItem, String newItem) {
+        int result = groceryList.indexOf(oldItem);
+        if(result >= 0) {
+            updateItem(result, newItem);
+        }
+    }
+
+    private void removeItem(int index) {
         groceryList.remove(index);
     }
 
-    public void findItem(String name) {
-        int result = groceryList.indexOf(name);
+    public void removeItem(String toDelete) {
+        int result = groceryList.indexOf(toDelete);
         if(result >= 0) {
-            System.out.println("The item " + name + " is present in the list");
-        } else
-            System.out.println("no such item in the list :(");
+            removeItem(result);
+        }
     }
+
+    private int findItem(String name) {
+        return groceryList.indexOf(name);
+    }
+
+    public boolean isItem(String name) {
+        int result = findItem(name);
+        if(result >= 0) {
+            return true;
+        } else
+            return false;
+    }
+
 
 }
