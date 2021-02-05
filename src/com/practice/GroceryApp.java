@@ -55,6 +55,7 @@ public class GroceryApp {
         return groceryList.indexOf(name);
     }
 
+    //checks if item is present
     public boolean isItem(String name) {
         int result = findItem(name);
         if(result >= 0) {
