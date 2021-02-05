@@ -3,10 +3,10 @@ package com.practice;
 import java.util.Scanner;
 
 public class Main {
-//        important to make them in the class field because if one put in the psvm, it will be restricted to that method
+    //        important to make them in the class field because if one put in the psvm, it will be restricted to that method
 //    static allows to use in the static main method
     private static Scanner customerDecision = new Scanner(System.in);
-     static GroceryApp customer = new GroceryApp();
+    static GroceryApp customer = new GroceryApp();
 
     static public void greeting() {
         System.out.println("Hello customer of Biedronka!");
@@ -26,7 +26,7 @@ public class Main {
         System.out.println("Enter the product name:");
         String name = customerDecision.nextLine();
 
-        customer.updateItem(index-1,name);
+        customer.updateItem(index - 1, name); //since a listArray is zero based
     }
 
     static public void add() {
@@ -40,7 +40,7 @@ public class Main {
         System.out.println("Enter the product index:");
 
         int index = customerDecision.nextInt();
-        customer.removeItem(index-1);
+        customer.removeItem(index - 1); //since a listArray is zero based
     }
 
     static public void find() {
